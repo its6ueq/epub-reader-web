@@ -1,0 +1,14 @@
+# Ebook / story files
+*.epub
+*.mobi
+*.azw
+*.azw3
+*.fb2
+*.cbz
+*.cbr
+*.pdf
+
+# Optional: common local reading library folders
+books/
+novels/
+library/

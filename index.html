@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EPUB Reader</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- JSZip (required by epub.js) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <!-- Epub.js -->
+    <script src="https://cdn.jsdelivr.net/npm/epubjs/dist/epub.min.js"></script>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Top toolbar -->
+        <header class="toolbar">
+            <div class="toolbar-left">
+                <button id="toggle-sidebar" class="btn" title="Table of Contents">☰</button>
+                <div class="file-upload">
+                    <label for="epub-file" class="btn">Open EPUB</label>
+                    <input type="file" id="epub-file" accept=".epub">
+                </div>
+                <span id="book-title" class="book-title">No book opened</span>
+            </div>
+            <div class="toolbar-right">
+                <button id="decrease-font" class="btn" title="Decrease font size">A-</button>
+                <button id="increase-font" class="btn" title="Increase font size">A+</button>
+                <button id="toggle-theme" class="btn" title="Toggle light/dark theme">☀️/🌙</button>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Sidebar (Table of Contents) -->
+            <aside id="sidebar" class="sidebar hidden">
+                <h3>Contents</h3>
+                <ul id="toc-list">
+                    <!-- TOC is populated by JS -->
+                </ul>
+            </aside>
+
+            <!-- Reader area -->
+            <main id="viewer-container">
+                <div id="viewer" class="viewer"></div>
+            </main>
+        </div>
+
+        <!-- Bottom navigation -->
+        <footer class="footer">
+            <button id="prev-btn" class="btn">◀ Previous</button>
+            <span id="page-info" class="page-info">- / -</span>
+            <button id="next-btn" class="btn">Next ▶</button>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

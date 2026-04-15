@@ -1,0 +1,225 @@
+/* Biến màu sắc cho Light/Dark Mode */
+:root {
+    --bg-color: #f3f1eb;
+    --text-color: #2f2a1f;
+    --toolbar-bg: #fffcf3;
+    --sidebar-bg: #f8f4ea;
+    --border-color: #d9cfb6;
+    --btn-bg: #ddcfad;
+    --btn-hover: #ccb98d;
+    --accent: #6f4e37;
+}
+
+body.dark-mode {
+    --bg-color: #1f1c17;
+    --text-color: #f7efdb;
+    --toolbar-bg: #2a251f;
+    --sidebar-bg: #322b21;
+    --border-color: #5f4e3a;
+    --btn-bg: #6f5a3f;
+    --btn-hover: #8a6e4c;
+    --accent: #ffd79e;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "Lora", "Palatino Linotype", serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    overflow: hidden; /* Ngăn scroll body, chỉ scroll phần cần thiết */
+    width: 100%;
+}
+
+/* Bố cục App */
+.app-container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    min-width: 0;
+}
+
+/* Toolbar phía trên */
+.toolbar {
+    min-height: 60px;
+    background-color: var(--toolbar-bg);
+    border-bottom: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    gap: 10px;
+}
+
+.toolbar-left, .toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    min-width: 0;
+}
+
+.book-title {
+    font-weight: bold;
+    margin-left: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: min(45vw, 360px);
+    color: var(--accent);
+}
+
+/* Nút bấm chung */
+.btn {
+    background-color: var(--btn-bg);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.2s;
+    font-family: inherit;
+}
+
+.btn:hover {
+    background-color: var(--btn-hover);
+}
+
+/* Nút upload file ẩn */
+.file-upload input {
+    display: none;
+}
+
+/* Nội dung chính giữa (Sidebar + Viewer) */
+.main-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+    min-width: 0;
+}
+
+/* Sidebar (Mục lục) */
+.sidebar {
+    width: 250px;
+    max-width: min(78vw, 250px);
+    background-color: var(--sidebar-bg);
+    border-right: 1px solid var(--border-color);
+    padding: 15px;
+    overflow-y: auto;
+    transition: transform 0.3s ease;
+}
+
+.sidebar.hidden {
+    display: none;
+}
+
+.sidebar h3 {
+    margin-bottom: 15px;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 5px;
+}
+
+#toc-list {
+    list-style: none;
+}
+
+#toc-list li {
+    margin-bottom: 8px;
+}
+
+#toc-list a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-size: 14px;
+    display: block;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+#toc-list a:hover {
+    background-color: var(--btn-hover);
+}
+
+/* Khu vực đọc (Viewer) */
+#viewer-container {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 20px;
+    background-color: var(--bg-color);
+}
+
+.viewer {
+    width: 100%;
+    height: 100%;
+    max-width: 960px;
+    min-width: 0;
+    background-color: var(--toolbar-bg); /* Giả lập mặt giấy */
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    color: var(--text-color);
+}
+
+/* Footer điều hướng trang */
+.footer {
+    min-height: 50px;
+    background-color: var(--toolbar-bg);
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 6px 10px;
+}
+
+.page-info {
+    font-size: 14px;
+    color: var(--text-color);
+}
+
+@media (max-width: 1200px) {
+    #viewer-container {
+        padding: 12px;
+    }
+}
+
+@media (max-width: 780px) {
+    .toolbar {
+        padding: 8px;
+    }
+
+    .book-title {
+        max-width: min(45vw, 170px);
+    }
+
+    .footer {
+        gap: 10px;
+        padding: 0 8px;
+    }
+}
+
+@media (max-width: 520px) {
+    .toolbar {
+        padding: 6px;
+    }
+
+    .btn {
+        padding: 7px 10px;
+        font-size: 13px;
+    }
+
+    #viewer-container {
+        padding: 8px;
+    }
+}
